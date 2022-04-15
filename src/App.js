@@ -1,23 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import {HomeworkTwo} from './pages/homework-2';
 
 function App() {
+  const secret_api_key=process.env.SPOTIFY_API_KEY;
+  console.log(secret_api_key);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HomeworkTwo />
     </div>
   );
 }
