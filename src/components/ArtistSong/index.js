@@ -1,8 +1,6 @@
 import React from "react";
 
-const ArtistSong = ({ artist }) => {
+export const ArtistSong = ({ artist }) => {
     return
     <h2>{artist}</h2>
 }
-
-export default ArtistSong;

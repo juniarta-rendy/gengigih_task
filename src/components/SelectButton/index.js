@@ -1,11 +1,11 @@
 import React from 'react';
 
-const SelectButton = ({ url }) => {
+export const SelectButton = ({ url }) => {
   return (
     <button
       style={{
         padding: '12px 32px',
-        borderRadius: '20px',
+        borderRadius: '4px',
         fontSize: '16px',
         backgroundColor: 'green',
       }}
@@ -16,5 +16,3 @@ const SelectButton = ({ url }) => {
     </button>
   );
 };
-
-export default SelectButton;
