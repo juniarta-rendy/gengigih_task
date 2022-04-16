@@ -1,10 +1,10 @@
 import React from 'react';
-import { SelectButton } from '../SelectButton';
-import { ArtistSong } from '../ArtistSong';
+import { SelectButton } from './SelectButton';
+import { ArtistSong } from './ArtistSong';
 import { SongImage } from './SongImage';
 import { SongTitle } from './SongTitle';
 
-const Album = ({ image, title, artist, url }) => {
+const Album = ({ image, title, artist, url, onClick, isSelected, id }) => {
   return (
     <div
       style={{
@@ -18,7 +18,12 @@ const Album = ({ image, title, artist, url }) => {
       <div style={{ color: '#1B1A17' }}>
         <SongTitle title={title} />
         <ArtistSong artist={artist} />
-        <SelectButton url={url} />
+        <SelectButton
+          url={url}
+          onClick={onClick}
+          isSelected={isSelected}
+          id={id}
+        />
       </div>
     </div>
   );

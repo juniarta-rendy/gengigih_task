@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const SelectButton = ({ url }) => {
+export const SelectButton = ({ url, isSelected, onClick, id }) => {
   return (
     <button
       style={{
@@ -11,13 +11,10 @@ export const SelectButton = ({ url }) => {
         outline: 'none',
         cursor: 'pointer',
       }}
+      onClick={onClick}
+      id={id}
     >
-      <a
-        href={url}
-        style={{ color: 'black', fontWeight: 'bold', textDecoration: 'none' }}
-      >
-        Select
-      </a>
+      {isSelected ? 'Deselect' : 'Select'}
     </button>
   );
 };
