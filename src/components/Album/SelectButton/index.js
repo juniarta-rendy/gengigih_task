@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const SelectButton = ({ url, isSelected, onClick, id }) => {
+export const SelectButton = ({ isSelected, onClick, id }) => {
   return (
     <button
       style={{
