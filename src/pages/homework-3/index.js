@@ -1,19 +1,30 @@
-import React from "react";
-import {ArtistSong} from "../../components/ArtistSong";
-import {SelectButton} from "../../components/SelectButton";
-import {SongImage} from "../../components/SongImage";
-import { SongTitle } from "../../components/SongTitle";
-import data from "../../data/data.json";
+import Album from "../../components/Album";
+import data from "../../data/data";
+
+const renderRow = () => {
+  return data.map((album) => {
+    return (
+      <Album
+        image={album.album.images[0].url}
+        title={album.name}
+        artist={album.artists[0].name}
+        url={album.artists[0].uri}
+        key={album.id}
+      />
+    );
+  });
+};
 
 export const HomeworkThree = () =>{
     return(
-        <div style={{ height: '100vh' }}>
-      <SongImage images={data.album.images} />
-      <div>
-        <SongTitle title={data.album.name} />
-        <ArtistSong artist={data.album.artists[0].name} />
-        <SelectButton url={data.album.artists[0].uri} />
-      </div>
+      <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '2rem',
+      }}
+    >
+      {renderRow()}
     </div>
     );
 };
