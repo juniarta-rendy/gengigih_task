@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import Album from '../../components/Album';
+import RowAlbum from '../../components/RowAlbum';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import NotAuthView from '../../components/NotAuth';
@@ -10,11 +10,8 @@ import {
   getCurrentProfile,
 } from '../../services/spotify';
 import FormPlaylist from '../../components/FormPlaylist';
-import { useDispatch, useSelector } from 'react-redux';
-import { setToken } from '../../store/authSlice';
 
 export const HomeworkOne = () => {
-  const dipatch = useDispatch();
   const [user, setUser] = useState('');
   const [valInput, setValInput] = useState({
     title: '',
@@ -25,7 +22,6 @@ export const HomeworkOne = () => {
   const [isUpdated, setIsUpdated] = useState(false);
   const [tempArr, setTempArr] = useState([]);
   const [selectedTracks, setSelectedTracks] = useState([]);
-  const token = useSelector((state) => state.token?.value);
 
   const access_token = new URLSearchParams(window.location.hash).get(
     '#access_token'
@@ -72,7 +68,6 @@ export const HomeworkOne = () => {
     const findIndex = selectedTracks.findIndex(
       (track) => track.uri === e.target.id
     );
-
     const removeItem = (arr, value) => {
       return arr.filter((ele) => {
         return ele !== value;
@@ -96,7 +91,7 @@ export const HomeworkOne = () => {
       )
       .map((album) => {
         return (
-          <Album
+          <RowAlbum
             onClick={handleClick}
             isSelected={album.isSelected}
             image={album.album.images[1].url}
@@ -113,7 +108,7 @@ export const HomeworkOne = () => {
   const renderSelectedRow = () => {
     return selectedTracks.map((album, index) => {
       return (
-        <Album
+        <RowAlbum
           onClick={handleClickSelected}
           isSelected={album.isSelected}
           image={album.album.images[1].url}
@@ -127,21 +122,24 @@ export const HomeworkOne = () => {
     });
   };
 
+  const [token, setToken] = useState('');
+
   useEffect(() => {
-    dispatch(setToken(access_token));
+    setToken(access_token);
     if (access_token) {
       getCurrentProfile(access_token).then((res) => {
         setUser(res.id);
       });
     }
-    setToken(access_token);
-  }, [dispatch, access_token]);
+  }, [access_token]);
 
   useEffect(() => {
     renderRow();
     setIsUpdated(false);
   }, [isUpdated]);
-  
+
+  useEffect(() => {});
+
   const getSongList = async () => {
     await axios
       .get(
@@ -201,7 +199,6 @@ export const HomeworkOne = () => {
           </>
         )}
         {selectedTracks && renderSelectedRow()}
-
         {tracks.length > 0 && (
           <>
             <h1>List of tracks</h1>
