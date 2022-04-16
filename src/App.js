@@ -1,13 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import {HomeworkThree} from './pages/homework-3';
+import { HomeworkOne } from './pages/homework-1';
 
 function App() {
   const secret_api_key=process.env.SPOTIFY_API_KEY;
   console.log(secret_api_key);
   return (
     <div className="App">
-      <HomeworkThree />
+      <HomeworkOne />
     </div>
   );
 }

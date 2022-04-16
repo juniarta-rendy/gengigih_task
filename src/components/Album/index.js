@@ -10,11 +10,12 @@ const Album = ({ image, title, artist, url }) => {
       style={{
         display: 'flex',
         alignItems: 'center',
-        backgroundColor: '#DFDFDE',
+        backgroundColor: '#E6D5B8',
+        borderRadius: '1rem',
       }}
     >
       <SongImage image={image} />
-      <div>
+      <div style={{ color: '#1B1A17' }}>
         <SongTitle title={title} />
         <ArtistSong artist={artist} />
         <SelectButton url={url} />
